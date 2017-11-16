@@ -1,7 +1,15 @@
+<?php
+
+	$data = json_decode(file_get_contents('data'), true);
+	
+?>
+
 <!DOCTYPE html>
 <!-- HTML5 Hello world by kirupa гадость - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
 <html lang="en-us">
 
+      <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+      <script src="main.js"></script>
 <head>
 <meta charset="utf-8">
 <title>	Fun club lovers Cillian Murphy</title>
@@ -50,19 +58,28 @@
 	</table>
 	
 	
+	<ol>
+		<?php foreach ($data as $user): ?>
+		<li><a href="mailto:<?php echo $user["email"] ?>">
+				<?php echo $user["nickname"] ?>
+			</a>
+		</li>
+		<?php endforeach; ?>
+	</ol>
+	
 	<form>
 		<div>
 			<label>введите email</label>
-			<input type="email"></input>
+			<input id="email" type="email"></input>
 		</div>
 		
 		<div>
 			<label>введите никнейм</label>
-			<input type="text"></input>
+			<input id='nickname' type="text"></input>
 		</div>
 		
 		<div>
-			<input type="submit" value="отправить"></input>
+			<button id='new-user-add-btn'>отправить</button>
 		</div>
 	</form>
 	
